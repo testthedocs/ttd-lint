@@ -1,7 +1,8 @@
 # ttd-lint
 
-
 ttd-lint is a linter for checking certain words.
+
+[![asciicast](https://asciinema.org/a/b8s34cplg3aqnztly3pe3pt03.png)](https://asciinema.org/a/b8s34cplg3aqnztly3pe3pt03)
 
 ## Install
 
