@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function usage () {
-  echo "Usage: blacklint [directories files]"
+  echo "Usage: ttd-lint [directories files]"
   echo
   echo "Options:"
   echo "    -h, --help          show help infomation."
@@ -20,8 +20,8 @@ fi
 
 FOUND_ERROR="FALSE"
 
-USER_BLACKLIST=~/.blacklintrc
-CWD_BLACKLIST=.blacklintrc
+USER_BLACKLIST=~/.ttd-lintrc
+CWD_BLACKLIST=.ttd-lintrc
 
 # Check the certain words.
 #
@@ -31,12 +31,12 @@ function checkBlackList () {
   blacklist_file=$1
   filepath=$2
 
-  if [ -f $blacklist_file ]; then
+  if [ -f "$blacklist_file" ]; then
     while IFS= read -r CHECK
     do
       if [ "$CHECK" != "" ]; then
 
-        ERRORS=$(grep -inr --color "${CHECK}" $filepath >&1)
+        ERRORS=$(grep -Fxnr --color "${CHECK}" "$filepath" >&1)
 
         if [ "$ERRORS" != "" ]; then
 
@@ -48,7 +48,7 @@ function checkBlackList () {
           echo -e "$ERRORS"
         fi
       fi
-    done < $blacklist_file
+    done < "$blacklist_file"
   fi
 }
 

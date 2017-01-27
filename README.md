@@ -1,52 +1,41 @@
-# BlackLint
+# ttd-lint
 
-[![NPM version][npm-badge]][npm-url]
 
-[npm-badge]: https://img.shields.io/npm/v/blacklint.svg?style=flat
-[npm-url]: https://www.npmjs.com/package/blacklint
-
-BlackLint is a linter for certain words.
+ttd-lint is a linter for checking certain words.
 
 ## Install
 
 ```bash
-$ npm install blacklint -g
+npm install ttd-lint -g
 ```
 
 ## Usage
 
-```bash
-$ blacklint ./src test data/**/*.json
-```
-
-For JavaScript project:
+This will check all files in the `docs` directory
 
 ```bash
-$ npm install blacklint --save-dev
+ttd-lint docs
+# Github
+docs/index.rst:5:Github
+
+Found certain words, please resolve it.
 ```
-
-package.json:
-
-```json
-{
-  "script": {
-    "ci": "blacklint src test"
-  }
-}
-```
-
 
 ## Configure
 
-~/.blacklintrc or ./.blacklintrc
+~/.ttd-lintrc or ./.ttd-lintrc
 
 ```txt
-black word
-certain word
+Github
+Javascript
 
 describe\.only(
 it\.only(
 ```
 
-* [‘grep’ regular expression syntax](https://www.gnu.org/software/findutils/manual/html_node/find_html/grep-regular-expression-syntax.html)
-* [Searching Files on UNIX](http://www.robelle.com/smugbook/regexpr.html)
+### Difference of this fork
+
+- ttd-linter is checking case sensitive and for the exact match
+- ttd-linter is tested against [shellcheck](https://www.shellcheck.net/)
+
+**Please note**, `ttd-lint` is only tested on Ubuntu 16.10 and Debian 8.

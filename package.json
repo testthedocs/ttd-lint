@@ -1,24 +1,27 @@
 {
-  "name": "blacklint",
-  "version": "1.0.0",
-  "description": "Check the certain words.",
+  "name": "ttd-lint",
+  "version": "0.0.1",
+  "description": "Check for certain words.",
   "main": "index.js",
   "bin": {
-    "blacklint": "./bin/blacklint"
+    "ttd-lint": "./bin/ttd-lint"
   },
   "scripts": {
     "test": "echo 'No tests' && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:hotoo/blacklint.git"
+    "url": "git@github.com:testthedocs/ttd-lint.git"
   },
   "keywords": [
     "test",
     "certain",
+    "documentation",
+    "docs",
+    "ci",
     "blacklist",
     "black list"
   ],
-  "author": "闲耘 <hotoo.cn@gmail.com>",
+  "author": "svx <sven@testthedocs.org>",
   "license": "MIT"
 }
