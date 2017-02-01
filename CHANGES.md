@@ -2,6 +2,7 @@
 
 ## 0.0.2
 
+- Fix #1 [svx]
 - Add asciinema to README [svx]
 
 ## 0.0.1
