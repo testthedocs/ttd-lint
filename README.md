@@ -24,7 +24,8 @@ Found certain words, please resolve it.
 
 ## Configure
 
-~/.ttd-lintrc or ./.ttd-lintrc
+You can either use a *global* configuration file `~/.ttd-lintrc` or one in your current working directory [/docs] `./.ttd-lintrc`.
+
 
 ```txt
 Github
