@@ -52,7 +52,7 @@ function checkBlackListUSER () {
   fi
 }
 
-function checkBlackListCDW () {
+function checkBlackListCWD () {
   blacklist_file=$1
   filepath=$2
 
@@ -80,15 +80,13 @@ function checkBlackListCDW () {
 # Check if we have a config file in $PWD
 FILE=$PWD/.ttd-lintrc
 if [ -f $FILE ]; then
-   echo "File '$FILE' Exists Hers"
-   checkBlackListCWD $CWD_BLACKLIST "$INPUT_DIR"
+    checkBlackListCWD $CWD_BLACKLIST "$INPUT_DIR"
 else
-   echo "The File '$FILE' Does Not Exist, use other"
-   checkBlackListUser $USER_BLACKLIST "$INPUT_DIR"
+    checkBlackListUSER $USER_BLACKLIST "$INPUT_DIR"
 fi
 
 if [ "$FOUND_ERROR" = "TRUE" ]; then
-   echo
-   echo -e "\033[31mFound certain words, please resolve it.\033[0m"
-   exit 1
+    echo
+    echo -e "\033[31mFound certain words, please resolve it.\033[0m"
+    exit 1
 fi
