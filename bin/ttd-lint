@@ -27,7 +27,7 @@ CWD_BLACKLIST=.ttd-lintrc
 #
 # @param {String} blacklist_file
 # @param {String} filepath or directory.
-function checkBlackList () {
+function checkBlackListUSER () {
   blacklist_file=$1
   filepath=$2
 
@@ -52,11 +52,43 @@ function checkBlackList () {
   fi
 }
 
-checkBlackList $CWD_BLACKLIST "$INPUT_DIR"
-checkBlackList $USER_BLACKLIST "$INPUT_DIR"
+function checkBlackListCDW () {
+  blacklist_file=$1
+  filepath=$2
+
+  if [ -f "$blacklist_file" ]; then
+    while IFS= read -r CHECK
+    do
+      if [ "$CHECK" != "" ]; then
+
+        ERRORS=$(grep -Fxnr --color --exclude="$blacklist_file" "${CHECK}" "$filepath" >&1)
+
+        if [ "$ERRORS" != "" ]; then
+
+          if [ "$FOUND_ERROR" = "FALSE" ]; then
+            FOUND_ERROR="TRUE"
+          fi
+
+          echo -e "# \033[33m$CHECK\033[0m"
+          echo -e "$ERRORS"
+        fi
+      fi
+    done < "$blacklist_file"
+  fi
+}
+
+# Check if we have a config file in $PWD
+FILE=$PWD/.ttd-lintrc
+if [ -f $FILE ]; then
+   echo "File '$FILE' Exists Hers"
+   checkBlackListCWD $CWD_BLACKLIST "$INPUT_DIR"
+else
+   echo "The File '$FILE' Does Not Exist, use other"
+   checkBlackListUser $USER_BLACKLIST "$INPUT_DIR"
+fi
 
 if [ "$FOUND_ERROR" = "TRUE" ]; then
-  echo
-  echo -e "\033[31mFound certain words, please resolve it.\033[0m"
-  exit 1
+   echo
+   echo -e "\033[31mFound certain words, please resolve it.\033[0m"
+   exit 1
 fi
