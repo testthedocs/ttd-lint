@@ -36,7 +36,7 @@ function checkBlackListUSER () {
     do
       if [ "$CHECK" != "" ]; then
 
-        ERRORS=$(grep -Fxnr --color --exclude="$blacklist_file" "${CHECK}" "$filepath" >&1)
+        ERRORS=$(grep -wnr --color --exclude="$blacklist_file" "${CHECK}" "$filepath" >&1)
 
         if [ "$ERRORS" != "" ]; then
 

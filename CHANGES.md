@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.6
+
+- Fix missing change [svx]
+
 ## 0.0.5
 
 - Improve grep, remove x, add w [svx]
